@@ -1,0 +1,10 @@
+project/
+├── main.cpp
+├── functions.h              ← f, df, ddf (shared by all)
+├── bisection.h
+├── regula_falsi.h
+├── newton_raphson.h
+├── secant.h
+├── hybrid_bisection_nr.h
+├── hybrid_bisection_secant.h
+└── hybrid_regulafalsi_nr.h
