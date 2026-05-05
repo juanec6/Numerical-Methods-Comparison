@@ -205,7 +205,7 @@ Este proyecto es parte de un estudio académico sobre métodos numéricos. Las c
 
 ## 👤 Autor
 
-**juanec6**
+**Juan David Escobar Cruz**
 
 ## 📄 Licencia
 
@@ -213,6 +213,6 @@ Este proyecto está desarrollado con fines académicos y de investigación.
 
 ---
 
-**Última actualización**: 2025
+**Última actualización**: 2026
 
 *Proyecto de Análisis Numérico - Comparación de Métodos para Resolución de Ecuaciones No Lineales*
