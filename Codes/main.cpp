@@ -83,7 +83,8 @@ int main()
 	cout << "Ingrese la tolerancia que necesita para la comparación: ";
 	cin >> tol;
 	cout << fixed << setprecision(5);
-	cout << "Valores Para Newton Raphson (temporal)" << endl;
+	cout << "Raices encontradas para Newton Raphson (temporal)" << endl;
+	cout << endl;
 	cout << newtonRaphson(xi, xf, step, tol, option) << endl;
 	cout << "Press enter to finish";
 	cin.ignore(); // Limpia el buffer del último Enter
