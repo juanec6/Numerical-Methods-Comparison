@@ -5,7 +5,7 @@
 #include "functions.h" // Here are the f(x, opcion) value. 
 using namespace std;
 
-double bisectionM(double xi, double xf, double step, double tol, int option)
+double bisectionMethod(double xi, double xf, double step, double tol, int option)
 {
 	for(int i = xi; i <= xf; i += step)
 	{
