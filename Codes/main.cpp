@@ -18,6 +18,8 @@ using namespace std;
 // The methods used in this program are created in libraries, the parameters of each function used in the library are numericalMethod(xi, xf, step, tol, option)
 int main()
 {	system("chcp 65001 > nul");
+	cout << "¡¡¡ DISCLAIMER: ESTE PROGRAMA SOLO SIRVE CON FUNCIONES CONTINUAS!!!" << endl;
+	cout << endl;
 	cout << "----- COMPARACIÓN DE MÉTODOS NUMÉRICOS SIMPLES CON MÉTODOS NUMÉRICOS HÍBRIDOS -----" << endl;
 	cout << endl;
 	cout << "Este programa reune la comparación de los siguientes mnétodos numéricos, utilizando algoritmos que permite a su vez," << endl;
@@ -82,10 +84,18 @@ int main()
 	cin >> step;
 	cout << "Ingrese la tolerancia que necesita para la comparación: ";
 	cin >> tol;
-	cout << fixed << setprecision(5);
+	if(tol > step || tol == step)
+	{
+		cout << endl;
+		cout << "¡La tolerancia no puede ser menor ni igual que el step!"<<endl;
+		cout << "Ingrese la tolerancia que necesita para la comparación: ";
+		cin >> tol;
+	}
+	cout << fixed << setprecision(4);
+	cout << endl;
 	cout << "Raices encontradas para Newton Raphson (temporal)" << endl;
 	cout << endl;
-	cout << newtonRaphson(xi, xf, step, tol, option) << endl;
+	newtonRaphson(xi, xf, step, tol, option);
 	cout << "Press enter to finish";
 	cin.ignore(); // Limpia el buffer del último Enter
 	cin.get();    // Espera un Enter
