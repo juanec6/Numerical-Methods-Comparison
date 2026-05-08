@@ -16,11 +16,12 @@ double newtonRaphson(double xi, double xf, double step, double tol, int option)
 {
     double x0, xn, xn1, dfx;
     int iter, maxIter = 150;
-    double toleranciaRaiz = 1e-10;   // tolerancia para comparar raíces repetidas
+    double toleranciaRaiz = std::max(tol * 2, 1e-10);   // tolerancia para comparar raíces repetidas
 
     std::vector<double> raices, xValores, yValores;
-    std::vector<double> raicesD;
-
+	
+	// Comienzo de iteraciones para encontrar múltiples raices usando el método de Newton-Raphson
+	// usando la condición de Kantorovich
     for(double i = xi; i <= xf; i = i + step) 
     {
         x0 = i;
@@ -34,43 +35,46 @@ double newtonRaphson(double xi, double xf, double step, double tol, int option)
             do
             {
                 dfx = df(xn, option);
-                if(dfx == 0) break;
+                if(fabs(dfx) < 1e-12) break; // Evita división por cero
 
                 xn1 = xn - f(xn, option) / dfx; // Newton–Raphson
 
                 // Criterio de parada
                 if(std::fabs(xn1 - xn) <= tol) break;
-
                 xn = xn1;
                 iter++;
-
                 if(iter > maxIter) break;
-
+                
             } while(std::fabs(f(xn, option)) > tol);
-        }
-        raices.push_back(xn);
+            
+            // Verificar que realmente es una raíz válida
+            if(std::fabs(f(xn, option)) <= tol)
+            {
+                // Verificar si la raíz ya fue encontrada
+                bool esNueva = true;
+                for(int j = 0; j < raices.size(); j++)
+                {
+                    if(std::fabs(xn - raices[j]) < toleranciaRaiz)
+                    {
+                        esNueva = false;
+                        break;
+                    }
+                }
+                
+                // Solo agregar si es una raíz nueva
+                if(esNueva)
+                {
+                    raices.push_back(xn);
+                }
+            }
+    	}
     } // Fin del método
 
-    // Limpieza de duplicados
+    // Ordenar las raíces de menor a mayor
+    std::sort(raices.begin(), raices.end());
     for(int i = 0; i < raices.size(); i++)
     {
-        for(int j = i + 1; j < raices.size();)
-        {
-            if(raices[j] == raices[i])
-            {
-                raices.erase(raices.begin() + j);
-            }
-            else
-            {
-                j++;
-            }
-        }
-    }
-
-    std::cout << "Raíces encontradas:" << std::endl;
-    for(int i = 0; i < raices.size(); i++)
-    {
-        std::cout << "Raíz " << i << ": " << raices[i] << std::endl;
+        std::cout << "Raíz " << i + 1 << ": " << raices[i] << std::endl;
     }
 
     return 0;
