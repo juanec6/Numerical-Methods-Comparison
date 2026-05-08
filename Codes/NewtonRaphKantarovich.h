@@ -74,6 +74,7 @@ double newtonRaphson(double xi, double xf, double step, double tol, int option)
     std::sort(raices.begin(), raices.end());
     for(int i = 0; i < raices.size(); i++)
     {
+    	// al parecer este código diverge en xi y en xf, entonces se ignorarán esos puntos
         std::cout << "Raíz " << i + 1 << ": " << raices[i] << std::endl;
     }
 
