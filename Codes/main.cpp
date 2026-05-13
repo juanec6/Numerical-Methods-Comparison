@@ -11,6 +11,7 @@
 #include <thread>
 #include "Bisection.h"
 #include "NewtonRaphKantarovich.h"
+#include "Secant.h"
 #include "Functions.h"
 
 using namespace std;
@@ -104,9 +105,16 @@ int main()
 	cout << endl;
 	bisectionMethod(xi, xf, step, tol, option);
 	cout << endl;
+	// SECANT
+	cout << endl;
+	cout << "Raices encontradas para el Método de la Secante (temporal)" << endl;
+	cout << endl;
+	secantMethod(xi, xf, step, tol, option);
+	cout << endl;
 	cout << "Press enter to finish";
 	cin.ignore(); // Limpia el buffer del último Enter
 	cin.get();    // Espera un Enter
+
 
     return 0;
 }
