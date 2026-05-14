@@ -9,10 +9,12 @@
 #include <algorithm>
 #include <sstream>
 #include <thread>
+#include "Functions.h"
 #include "Bisection.h"
 #include "NewtonRaphKantarovich.h"
 #include "Secant.h"
-#include "Functions.h"
+#include "RegulaFalsi.h"
+
 
 using namespace std;
 
@@ -110,6 +112,12 @@ int main()
 	cout << "Raices encontradas para el Método de la Secante (temporal)" << endl;
 	cout << endl;
 	secantMethod(xi, xf, step, tol, option);
+	cout << endl;
+	// REGULA FALSI
+	cout << endl;
+	cout << "Raices encontradas para el Método de Regula Falsi (temporal)" << endl;
+	cout << endl;
+	regulaFalsiMethod(xi, xf, step, tol, option);
 	cout << endl;
 	cout << "Press enter to finish";
 	cin.ignore(); // Limpia el buffer del último Enter
